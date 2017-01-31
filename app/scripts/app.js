@@ -70,86 +70,41 @@ function debounce(func, wait, immediate) {
      }
      return {width:viewPortWidth, height:viewPortHeight};
   }
-/*##########################################
-Functions tied specifically to this page 
-dependent on element name, id, class and/or 
-location of elements on the page.
-##########################*/
+
+var thankyoustate = false;
   function updatePosition() {
-        /*##################
-        Index the elements we need
-        ########################*/
-        //alert("in updatePosition");
-        Navigator = document.querySelector("#navigator");
+
+
         TitleBar = document.querySelector("#titlebar");
-        PageContainer = document.querySelector("#pagecontainer");
         CompanyName = document.querySelector("#companyname");
         Outro = document.querySelector('#outro');
         OutroSpan = document.querySelector('#thankyou');
-        /*##################
-        Take a snap shot of indexed elements 
-        cur location relative to viewport
-        ########################*/
+
         CompanyNameRect = getPosition(CompanyName);
-        NavigatorRect = getPosition(Navigator);
         TitleBarRect = getPosition(TitleBar);
         OutroRect = getPosition(Outro);
         OutroSpanRect = getPosition(OutroSpan);
 
-        //NavigatorCurPositionProp = getComputedStyle(Navigator).getPropertyValue("position");
-        if(NavigatorRect.top <= CompanyNameRect.bottom){
-          //Navigator.style.position = "fixed";
-          //adjustedPosition = CompanyNameRect.bottom;
-          //Navigator.style.top = adjustedPosition+"px";
-          //Navigator.style.left = "0px";
+        if(TitleBarRect.bottom <= CompanyNameRect.bottom && thankyoustate === false){
+          thankyoustate = true;
           OutroHeight = OutroRect.bottom - OutroRect.top;
           OutroSpanHeight = OutroSpanRect.bottom - OutroSpanRect.top;
           OutroSpan.classList.remove('verticalTranslateDown');
           OutroSpan.classList.add('verticalTranslateUp');
-          //Outro.style.background = "rgba(40, 87, 40, 1)";
+
         }
-        if(TitleBarRect.bottom >= NavigatorRect.top){
-            /*################################################
-            #If the element affected here is not soley wrapped in an element that has a fixed size and 
-            #maintains flow this request for layout and paint caused by the style changes could cause
-            #a domino effect -- Note worthy if you need to do anything more drastic than this be careful
-            ############################################*/
-            //Navigator.style.position = "relative";
-            //Navigator.style.top = "0px";
-            //Navigator.style.left = "0px";
-            //Outro.style.background = "transparent";
-            OutroSpan.classList.remove('verticalTranslateUp'); 
-            OutroSpan.classList.add('verticalTranslateDown');   
+        if(TitleBarRect.bottom >= CompanyNameRect.bottom && thankyoustate === true){
+          thankyoustate = false;
+          OutroSpan.classList.remove('verticalTranslateUp'); 
+          OutroSpan.classList.add('verticalTranslateDown');   
         }
   }
   var updatePositionDebounced = debounce(updatePosition,14); 
-  function setBodyPaddingRelViewPort(){
-       //Body = document.querySelector("body");
-       //Header = document. querySelector("cc-header");
-       //Navigator = document.querySelector("#navigator");
-       //PageContainer = document.querySelector("#pagecontainer");
-       //TitleBar = document.querySelector("#titlebar");
-       //bodyRect = getPosition(Body);
-       //console.log("bodyRect");
-       //console.log(bodyRect);
-       //navRect = getPosition(Navigator);
-       //headerRect = getPosition(Header);
-       //containerRect = getPosition(PageContainer);
-       //navigatorRect = getPosition(Navigator);
-       //titleRect = getPosition(TitleBar);
-       //Padding3 = parseInt(headerRect.height);
-       //Padding3 =parseInt(titleRect.height)+parseInt(navigatorRect.height);
-       //ViewPort = getViewport();
-       //Padding=(ViewPort.height*.5);
-       //console.log(Padding3);
-       //Body.style.paddingBottom = Padding3+"px";
-      //console.log("body padding "+Body.style.paddingBottom);
-return;
-  }
+
+  function setBodyPaddingRelViewPort(){}
 
   function updateSize(){
       dealWithCSSQuirks();
-      //setBodyPaddingRelViewPort();
       updatePosition();
   }
   function dealWithCSSQuirks(){
@@ -201,14 +156,9 @@ return;
       window.addEventListener('WebComponentsReady', function() {
         // imports are loaded and elements have been registered
         //setRoutes(app);
-            $('.sticky').Stickyfill();
+        $('.sticky').Stickyfill();
         setBodyPaddingRelViewPort();
         dealWithCSSQuirks();
-	      //console.log('WebComponentsReady Fires here');
-        //updatePosition();
-        //dealWithCSSQuirks();
-        //setBodyPaddingRelViewPort();
-        //updatePosition();
       });
       /*******************
         PSK had additional script here.

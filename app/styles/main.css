@@ -11,12 +11,15 @@ body {
         min-width:100%
         width:100%;
         margin: 0px;
+        min-height:100%;
+
         padding-top:0px;
         padding-right:0px;
         padding-left:0px;
-        padding-bottom:26.55%;
+margin-bottom:26.55%;
+        //padding-bottom:26.55%;//26.55%;
         //border:solid red 10px;
-        margin:0px;
+        //margin:0px;
         font-family: 'Open Sans', sans-serif;
         background-color:rgba(40, 87, 40, 1) !important;
         height:auto;
@@ -36,12 +39,12 @@ body {
   height:auto;
   //border:solid green 5px;
 }
-#app {
+/*#app {
   display:block;
   min-height:100vh;
   height:auto;
-  //border:solid green 5px;
-}
+  border:solid green 5px;
+}*/
 div#page-container{
         z-index:90;
         padding:0px!important;
@@ -113,6 +116,7 @@ div#outro > span{
        -moz-animation: up 1s forwards linear infinite;
        -o-animation: up 1s forwards linear infinite; 
        animation-iteration-count: 1;
+       animation-fill-mode: forwards;
 }
 @keyframes up {
        0%  { bottom: calc(0px-100%); } /* When you start the slide, the first image is already visible */
@@ -132,6 +136,7 @@ div#outro > span{
        -moz-animation: down 2s forwards linear infinite;
        -o-animation: down 2s forwards linear infinite; 
        animation-iteration-count: 1;
+       animation-fill-mode: forwards;
 }
 @keyframes down {
        0%  { bottom: 0; } 
