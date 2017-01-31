@@ -1,3 +1,4 @@
+<!doctype html>
 <script src="../bower_components/page/page.js"></script>
 <script>
   window.addEventListener('WebComponentsReady', function() {
@@ -9,7 +10,7 @@
     //app.baseUrl = "/";
     // Removes end / from app.baseUrl which page.base requires for production
     if (window.location.port === '') {  // if production
-      //console.log(app.baseUrl);
+      console.log(app.baseUrl);
       page.base(app.baseUrl.replace(/\/$/, ''));
     }
 
@@ -76,11 +77,14 @@
       app.$.toast.show();
       page.redirect(app.baseUrl);
     });
-
+    page_config = (function(){
+      var hashbang = (window.location.port === '' ? false : true)
+      return {
+        hashbang:hashbang
+      }
+    })();
     // add #! before urls
-    page({
-      hashbang: false
-    });
+    page(page_config);
 
   });
 </script>

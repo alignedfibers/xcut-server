@@ -4,7 +4,7 @@ For convenience
 function addKeyVal(key, val, obj){
       //requires that an object is passed in.
       obj[key] = val;
-    }    
+    }
 function emptyObj(){}
 /*##########################################
 Helper functions and Functions for when
@@ -23,7 +23,7 @@ function debounce(func, wait, immediate) {
 		timeout = setTimeout(later, wait);
 		if (callNow) func.apply(context, args);
 	};
-};
+}
 
   function getPosition(el) {
   //Find our more about this function here
@@ -33,7 +33,7 @@ function debounce(func, wait, immediate) {
       while(el){
         if (el.tagName == "BODY") {
           var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
-          var yScroll = el.scrollTop || document.documentElement.scrollTop;     
+          var yScroll = el.scrollTop || document.documentElement.scrollTop;
           _left += (el.offsetLeft - xScroll + el.clientLeft);
           _top += (el.offsetTop - yScroll + el.clientTop);
         }else{
@@ -51,22 +51,22 @@ function debounce(func, wait, immediate) {
    /*##############*/
   function getViewport() {
   //Find out more about this function here
-  // http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/ 
+  // http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/
      var viewPortWidth;
      var viewPortHeight;
      if (typeof window.innerWidth != 'undefined') {
-       viewPortWidth = window.innerWidth,
-       viewPortHeight = window.innerHeight
+       viewPortWidth = window.innerWidth;
+       viewPortHeight = window.innerHeight;
      }
-     else if (typeof document.documentElement != 'undefined'
-     && typeof document.documentElement.clientWidth !=
-     'undefined' && document.documentElement.clientWidth != 0) {
-        viewPortWidth = document.documentElement.clientWidth,
-        viewPortHeight = document.documentElement.clientHeight
+     else if (typeof document.documentElement !== 'undefined' &&
+     typeof document.documentElement.clientWidth !== 'undefined' &&
+     document.documentElement.clientWidth !== 0) {
+        viewPortWidth = document.documentElement.clientWidth;
+        viewPortHeight = document.documentElement.clientHeight;
      }
      else {
-       viewPortWidth = document.getElementsByTagName('body')[0].clientWidth,
-       viewPortHeight = document.getElementsByTagName('body')[0].clientHeight
+       viewPortWidth = document.getElementsByTagName('body')[0].clientWidth;
+       viewPortHeight = document.getElementsByTagName('body')[0].clientHeight;
      }
      return {width:viewPortWidth, height:viewPortHeight};
   }
@@ -95,11 +95,11 @@ var thankyoustate = false;
         }
         if(TitleBarRect.bottom >= CompanyNameRect.bottom && thankyoustate === true){
           thankyoustate = false;
-          OutroSpan.classList.remove('verticalTranslateUp'); 
-          OutroSpan.classList.add('verticalTranslateDown');   
+          OutroSpan.classList.remove('verticalTranslateUp');
+          OutroSpan.classList.add('verticalTranslateDown');
         }
   }
-  var updatePositionDebounced = debounce(updatePosition,14); 
+  var updatePositionDebounced = debounce(updatePosition,14);
 
   function setBodyPaddingRelViewPort(){}
 
@@ -110,7 +110,7 @@ var thankyoustate = false;
   function dealWithCSSQuirks(){
     //This function sets a css custom property to change its default
     //bottom position, should run only on screen resize and load
-    Root = document.body; 
+    Root = document.body;
     ThankYou = document.querySelector('#thankyou');
     ThankYouRect = getPosition(ThankYou);
     ThankYouHeight = ThankYouRect.bottom - ThankYouRect.top+20;
@@ -132,11 +132,12 @@ var thankyoustate = false;
         window.addEventListener("resize", updateSize, false);
       // Sets app default base URL
       app.baseUrl = '/';
+      console.log(window.location.port);
       if (window.location.port === '') {  // if production
         // Uncomment app.baseURL below and
         // set app.baseURL to '/your-pathname/' if running from folder in production
-        // app.baseUrl = '/polymer-starter-kit/';
-      }
+        app.baseUrl = '/';
+      }else{app.baseUrl = '/polymer_crosscut_clientsite/app/index.html';}
 
       app.displayInstalledToast = function() {
         // Check to make sure caching is actually enabled—it won't be in the dev environment.

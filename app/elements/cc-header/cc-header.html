@@ -1,4 +1,5 @@
-<link rel="import" href="https://www.crosscutproperty.com/elements/cc-header/css-mixins/cc-header-custom-style-properties.html">
+<!doctype html>
+<link rel="import" href="css-mixins/cc-header-custom-style-properties.html">
 <dom-module id="cc-header">
   <style>
     /*########################
@@ -9,7 +10,7 @@
       }
       :host cc-navigator{
         /*display:block;
-        /position:-webkit-sticky;        
+        /position:-webkit-sticky;
         position:sticky;*/
         /*top:0px;/*var(--header-aspect-ratio);/*calc(100vw*var(--header-aspect-ratio));*/
         /*border:solid blue 3px !important;*/
@@ -31,27 +32,27 @@
       <div id="companyname" style="">Cross Cut Property Services Inc.</div>
       <cc-title-bar unitId="crosscutproperty/2016" id="titlebar">
         <!--###############################################################
-        Declaration and Attention Getter / Anouncement 
+        Declaration and Attention Getter / Anouncement
         Your graphic and primary customer view items load here
         ###################################################################
       </cc-title-bar>
       <div id="navplaceholder" style="min-height:60px;">
       <cc-navigator class="" attr-for-selected="data-route" id="navigator" selected="[[route]]" style="z-index:110 !important;">
-        <ul class="main-nav"> 
+        <ul class="main-nav">
           <li class="top-level-link">
-            <a data-route="home" href="{{baseUrl}}home"><span>Home</span></a>      
+            <a data-route="home" href="{{baseUrl}}home"><span>Home</span></a>
           </li>
           <li class="top-level-link">
-            <a data-route="takeaction" href="{{baseUrl}}takeaction"><span>Take Action</span></a>      
+            <a data-route="takeaction" href="{{baseUrl}}takeaction"><span>Take Action</span></a>
           </li>
           <li class="top-level-link">
-            <a data-route="coveragearea" href="{{baseUrl}}coveragearea"><span>Coverage Area</span></a>      
+            <a data-route="coveragearea" href="{{baseUrl}}coveragearea"><span>Coverage Area</span></a>
           </li>
           <li class="top-level-link">
-            <a data-route="services" href="{{baseUrl}}services"><span>Our Services</span></a>      
+            <a data-route="services" href="{{baseUrl}}services"><span>Our Services</span></a>
           </li>
           <li class="top-level-link">
-            <a data-route="equipment" href="{{baseUrl}}equipment"><span>Equipment</span></a>     
+            <a data-route="equipment" href="{{baseUrl}}equipment"><span>Equipment</span></a>
          </li>
        </ul>
      </cc-navigator>
@@ -77,7 +78,7 @@
       is: 'cc-header',
       properties: {},
       ready: function(){
-        
+
       },
       attached: function(){
         var newEl = document.createElement("SCRIPT");
@@ -118,8 +119,7 @@
         document.getElementsByTagName("head")[0].appendChild(newEl);
 
       }
-      
+
     });
   </script>
 </dom-module>
-
