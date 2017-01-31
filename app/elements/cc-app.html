@@ -1,35 +1,42 @@
+<!doctype html>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-<link href='https://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'/>
+<link href="https://fonts.googleapis.com/css?family=Arizonia" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="../styles/main.css">
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="elements.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../styles/app-theme.html">
+<link rel="import" href="../styles/shared-styles.html">
+<link rel="import" href="../styles/my-main.html">
+<link rel="import" href="../bower_components/paper-material/paper-material-shared-styles.html">
 <dom-module id="cc-app">
-  <style is="custom-style" include="shared-styles"></style>
+
 
   <template>
+        <style include="shared-styles"></style>
         <div id="companyname" style="">Cross Cut Property Services Inc.</div>
-        <cc-title-bar unitId="crosscutproperty/2016" id="titlebar">
+        <cc-title-bar unitid="crosscutproperty/2016" id="titlebar">
           <!--###############################################################
-          Declaration and Attention Getter / Anouncement 
+          Declaration and Attention Getter / Anouncement
           Your graphic and primary customer view items load here
           ###################################################################-->
         </cc-title-bar>
         <cc-navigator class="sticky" attr-for-selected="data-route" id="navigator" selected="[[route]]" style="position:sticky; z-index:110 !important;top:50.24px;">
-          <ul class="main-nav"> 
+          <ul class="main-nav">
             <li class="top-level-link">
-              <a data-route="home" href="{{baseUrl}}home"><span>Home</span></a>      
+              <a data-route="home" href="{{baseUrl}}home"><span>Home</span></a>
             </li>
             <li class="top-level-link">
-              <a data-route="takeaction" href="{{baseUrl}}takeaction"><span>Take Action</span></a>      
+              <a data-route="takeaction" href="{{baseUrl}}takeaction"><span>Take Action</span></a>
             </li>
             <li class="top-level-link">
-              <a data-route="coveragearea" href="{{baseUrl}}coveragearea"><span>Coverage Area</span></a>      
+              <a data-route="coveragearea" href="{{baseUrl}}coveragearea"><span>Coverage Area</span></a>
             </li>
             <li class="top-level-link">
-              <a data-route="services" href="{{baseUrl}}services"><span>Our Services</span></a>      
+              <a data-route="services" href="{{baseUrl}}services"><span>Our Services</span></a>
             </li>
             <li class="top-level-link">
-              <a data-route="equipment" href="{{baseUrl}}equipment"><span>Equipment</span></a>     
+              <a data-route="equipment" href="{{baseUrl}}equipment"><span>Equipment</span></a>
            </li>
          </ul>
        </cc-navigator>
@@ -38,14 +45,15 @@
         <div class="content" id="page-container" style="">
           <iron-pages attr-for-selected="data-route" selected="{{route}}" style="z-index:70 !important; margin:0px !important; padding:0px !important;height:auto !important;">
             <section data-route="home" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
+
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Home</h1>
                       <p>
-                        Cross Cut Property Services provides professional lawn, shrub, garden and property maintenance as well as snow removal. 
-                        Owned by Rick Zobel who has been in the industry since the early '90s this company is built on sensible solutions and 
-                        their successful execution. As Rick is very industrious and knowledgeable in lawn maintenance and it's management he is 
-                        able to simplify tasks and provide value in structuring a well defined plan for single family homes, multi-facility commercial 
-                        properties, residential associations and government properties. Cross Cut Properties maintains equipment for large brush cut 
+                        Cross Cut Property Services provides professional lawn, shrub, garden and property maintenance as well as snow removal.
+                        Owned by Rick Zobel who has been in the industry since the early '90s this company is built on sensible solutions and
+                        their successful execution. As Rick is very industrious and knowledgeable in lawn maintenance and it's management he is
+                        able to simplify tasks and provide value in structuring a well defined plan for single family homes, multi-facility commercial
+                        properties, residential associations and government properties. Cross Cut Properties maintains equipment for large brush cut
                         and wild growth maintenance as well as professional mowing, trimming and garden maintenance.
                       </p>
               </paper-material>
@@ -71,9 +79,9 @@
             <section data-route="coveragearea" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Coverage Area</h1>
-                      <p>We service the Twincities, Metropolitan and Extended Areas completing weekly routes throughout Minneapolis, Saint Paul, NE and NW suburbs. 
-                         Our service area is increasing, please call Rick Zobel at 763-234-7869 or complete our <a href="{{baseUrl}}underconstruction">start quote process here </a> 
-                         to go over details and find a service schedule. We follow up on all quote requests submitted via online tool and are happy to take your call. 
+                      <p>We service the Twincities, Metropolitan and Extended Areas completing weekly routes throughout Minneapolis, Saint Paul, NE and NW suburbs.
+                         Our service area is increasing, please call Rick Zobel at 763-234-7869 or complete our <a href="{{baseUrl}}underconstruction">start quote process here </a>
+                         to go over details and find a service schedule. We follow up on all quote requests submitted via online tool and are happy to take your call.
                       </p>
               </paper-material>
             </section>
@@ -82,7 +90,7 @@
               <paper-material elevation="1">
                   <h1 class="page-title" tabindex="-1">Equipment</h1>
                         <p>Outstanding and well maintained equipment is key to a job done right. One of our jobs is to ensure all Tools and Equipment are in optimum condition.
-                           We use best in class zero turn lawn mowers, weedwhips, leaf blowers, bagging and collection aparatus. We take pride in our tools employing equipment 
+                           We use best in class zero turn lawn mowers, weedwhips, leaf blowers, bagging and collection aparatus. We take pride in our tools employing equipment
                            from makers such as: Toro, Gravely, Husqavarna,
                         </p>
               </paper-material>
@@ -104,9 +112,9 @@
                 <div style="float:left;max-width:600px;">
                   <h1 class="page-title" tabindex="-1">Under Construction</h1>
                   <p>Thank you for visiting, this content is not yet ready or available at this time.
-                     Please stop back near the First of May 2016 to check on improvements.</p>   
+                     Please stop back near the First of May 2016 to check on improvements.</p>
                 </div>
-                <img src="../images/misc/longgrass.jpg" style="float:right;"></img>
+                <img src="../images/misc/longgrass.jpg" style="float:right;"/>
                 <div style="display:block; clear:both"></div>
               </paper-material>
             </section>
@@ -169,14 +177,13 @@
           Polymer.dom(document).querySelector('#caching-complete').show();
         }
       };
-      
+
       app.addEventListener('dom-change', function() {
         console.log('Our app is ready to rock!');
       });
       //console.dir(app);
-      //setRoutes(app);  
+      //setRoutes(app);
     });
   })();
   </script>
  </dom-module>
-
