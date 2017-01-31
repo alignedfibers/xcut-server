@@ -43,6 +43,15 @@ var polymerExternalStyle = p.AND(
   p.hasAttrValue('type', 'css')
 );
 
+var htmlImport = p.AND(
+  p.hasTagName('link'),
+  p.hasAttrValue('rel', 'import'),
+  p.OR(
+    p.NOT(p.hasAttr('type')),
+    p.hasAttrValue('type', 'text/html')
+  )
+);
+
 var styleMatcher = p.AND(
   p.hasTagName('style'),
   p.OR(
@@ -80,11 +89,12 @@ module.exports = {
   urlAttrs: urlAttrs,
   targetMatcher: targetMatcher,
   polymerExternalStyle: polymerExternalStyle,
+  htmlImport: htmlImport,
   JS: jsMatcher,
   CSS: styleMatcher,
   CSS_LINK: externalStyle,
   POLY_CSS_LINK: polymerExternalStyle,
   ALL_CSS_LINK: p.OR(externalStyle, polymerExternalStyle),
   JS_SRC: p.AND(p.hasAttr('src'), jsMatcher),
-  JS_INLINE: p.AND(p.NOT(p.hasAttr('src')), jsMatcher),
+  JS_INLINE: p.AND(p.NOT(p.hasAttr('src')), jsMatcher)
 };
