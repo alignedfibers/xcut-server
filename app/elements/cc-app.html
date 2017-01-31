@@ -7,13 +7,27 @@
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../styles/app-theme.html">
 <link rel="import" href="../styles/shared-styles.html">
-<link rel="import" href="../styles/my-main.html">
 <link rel="import" href="../bower_components/paper-material/paper-material-shared-styles.html">
 <dom-module id="cc-app">
 
 
   <template>
         <style include="shared-styles"></style>
+        <style is="custom-style">
+        .sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            /*background: black;
+            background: rgba(0,0,0,0.8);
+            padding: 2em;
+            color: white;*/
+        }
+        .sticky--desktop {
+            display: none;
+        }
+        </style>
+
         <div id="companyname" style="">Cross Cut Property Services Inc.</div>
         <cc-title-bar unitid="crosscutproperty/2016" id="titlebar">
           <!--###############################################################

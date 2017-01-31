@@ -1,3 +1,4 @@
+<!doctype html>
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="cc-navigator">
@@ -15,7 +16,7 @@
           top: 50.24px;
         z-index:110 !important;
         width: -webkit-calc(100% - 0px);
-        width:         calc(100% - 0px); 
+        width:         calc(100% - 0px);
       }
       /*:host nav:before{
               content: '';
@@ -29,7 +30,7 @@
       :host nav{
         display:block;
         background-color:transparent;
-        z-index:13 !important; 
+        z-index:13 !important;
         height:60px;
       }
       :host nav:after{
@@ -45,11 +46,11 @@
               text-align:left;
       }
       /************************
-      .ic.menu can be broken out 
-      into its own component and 
-      toggle next sibling this is 
+      .ic.menu can be broken out
+      into its own component and
+      toggle next sibling this is
       really just a toggle component
-      ********************/   
+      ********************/
       :host .ic.menu {
         top: 25px;
         z-index: 9;
@@ -128,7 +129,7 @@
       ################################################*/
       @media only screen and (min-width: 72rem) {
 
-        :host ::content ul.main-nav { 
+        :host ::content ul.main-nav {
                 background-color:transparent;
                 display:block;
                 margin:auto;
@@ -148,9 +149,9 @@
                 min-height:100%;
         }
         :host ::content .sub-menu-block { padding: 15px; }
-        
+
         /* Sub Menu */
-        :host ::content ul.main-nav > li > div.sub-menu-block { 
+        :host ::content ul.main-nav > li > div.sub-menu-block {
                 display: block;
                 visibility: hidden;
                 position: absolute;
@@ -165,7 +166,7 @@
                 z-index : 3;
                 font-size: 16px;
                 opacity: 0;
-          
+
                 /*CSS animation applied for sub menu : Slide from Top */
                 -webkit-transition: all 0.4s ease 0s;
                 -o-transition: all 0.4s ease 0s;
@@ -176,11 +177,11 @@
                 transform: rotateX(90deg);
                 -webkit-transform-origin: top center;
                 -ms-transform-origin: top center;
-                transform-origin: top center;   
+                transform-origin: top center;
         }
-        
-        :host ::content ul.main-nav > li:hover > div.sub-menu-block { 
-                background-color: transparent; 
+
+        :host ::content ul.main-nav > li:hover > div.sub-menu-block {
+                background-color: transparent;
                 visibility: visible;
                 opacity: 1;
                 -webkit-transform: rotateX(0deg);
@@ -205,7 +206,7 @@
         :host ::content ul.main-nav > li:hover > div.sub-menu-block > * {
           opacity: 1;
         }
-        
+
         :host ::content ul.main-nav > li ul.sub-menu-lists > li a {
           color: #eee;
           font-size: 14px;
@@ -215,21 +216,21 @@
         }
         /* List Separator: Outer Border */
         :host ul.main-nav > li > a { background-color:transparent;border: 1px solid #bbb; }
-        
+
         /* Drop Down/Up Arrow for Mega Menu */
             /**************************
             Can be broken into a small component
             with attributes for different bullet
             point toggles with icons, toggle next sibling
             *****************************/
-        :host ::content ul.main-nav > li > a.mega-menu > span { 
-            background-color:transparent; 
-            display: block; 
-            vertical-align: middle; 
+        :host ::content ul.main-nav > li > a.mega-menu > span {
+            background-color:transparent;
+            display: block;
+            vertical-align: middle;
         }
         :host ::content ul.main-nav > li > a.mega-menu > span:after {
-          width: 0; 
-          height: 0; 
+          width: 0;
+          height: 0;
           border-left: 5px solid transparent;
           border-right: 5px solid transparent;
           border-top: 5px solid #fff;
@@ -239,7 +240,7 @@
           margin-left: 10px;
           vertical-align: middle;
         }
-      
+
         :host ::content ul.main-nav > li:hover > a.mega-menu span:after {
           border-left: 5px solid transparent;
           border-right: 5px solid transparent;
@@ -252,7 +253,7 @@
       }
 
       /*###############################################
-      Content Styles Applicable to Small Screen 
+      Content Styles Applicable to Small Screen
       #################################################*/
       @media only screen and (max-width: 72rem){
       /************
@@ -269,7 +270,7 @@
 
   }
   .ic.menu .line {
-        background-color: green;    
+        background-color: green;
   }
   .ic.menu .line {
     -webkit-transition: all 0.4s ease 0s;
@@ -312,7 +313,7 @@
     outline: none;
   }
   /*
-  
+
   .ic.menu:focus ~ .ic.close { opacity: 1.0; z-index : 21;  }
   .ic.close:focus { opacity: 0; }
   */
@@ -368,7 +369,7 @@
           display: none;
         }
         :host ::content ul.main-nav > li:first-child {
-            //Possibly unneeded            
+            //Possibly unneeded
           border-radius: 0px;
         }
         :host ::content ul.main-nav > li {
@@ -392,7 +393,7 @@
         }
 
         /****************
-        Submenu styles    
+        Submenu styles
         ***************/
         :host ::content ul.main-nav > li ul.sub-menu-lists > li a {
           color: #eee;
@@ -410,9 +411,9 @@
           padding: 0 30px;
         }
         /************
-         Scoped to all content sent in 
+         Scoped to all content sent in
         **********/
-        :host ::content .sub-menu-head {            
+        :host ::content .sub-menu-head {
           font-size: 16px;
         }
         :host ::content .banners-area {
@@ -426,14 +427,14 @@
         }
         :host ::content div.quote-text{
           width:65%;
-          font-size: .8rem 
+          font-size: .8rem
         }
         :host ::content div.quote-text:before{
 
 	      border-top: .5rem solid transparent;
 	      border-bottom: .5rem solid transparent;
 	      border-left: .5rem solid rgba(40, 87, 40, 1);
-          
+
         }
         :host ::content  div.quote-text:after{
 	      border-top: .5rem solid transparent;
@@ -468,7 +469,7 @@
                             </a>
                             <a href="javascript:void(0);" class="ic close"></a>
                             <content></content>
-                        </nav> 
+                        </nav>
   </template>
   <script>
   (function() {
