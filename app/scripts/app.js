@@ -132,7 +132,7 @@ var thankyoustate = false;
         window.addEventListener("resize", updateSize, false);
       // Sets app default base URL
       app.baseUrl = '/';
-      console.log(window.location.port);
+
       if (window.location.port === '') {  // if production
         // Uncomment app.baseURL below and
         // set app.baseURL to '/your-pathname/' if running from folder in production
@@ -148,7 +148,7 @@ var thankyoustate = false;
 
       // Listen for template bound event to know when bindings
       // have resolved and content has been stamped to the page
-      app.addEventListener('dom-change', function() {
+      window.addEventListener('dom-change', function() {
         console.log('Our app is ready to rock!');
       });
 
@@ -157,7 +157,7 @@ var thankyoustate = false;
       window.addEventListener('WebComponentsReady', function() {
         // imports are loaded and elements have been registered
         //setRoutes(app);
-        $('.sticky').Stickyfill();
+        //$('.sticky').Stickyfill();
         setBodyPaddingRelViewPort();
         dealWithCSSQuirks();
       });

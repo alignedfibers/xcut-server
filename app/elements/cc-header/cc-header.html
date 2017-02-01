@@ -15,18 +15,7 @@
         /*top:0px;/*var(--header-aspect-ratio);/*calc(100vw*var(--header-aspect-ratio));*/
         /*border:solid blue 3px !important;*/
       }
-      .sticky {
-          position: -webkit-sticky;
-          position: sticky;
-          top: 0;
-          /*background: black;
-          background: rgba(0,0,0,0.8);
-          padding: 2em;
-          color: white;*/
-      }
-      .sticky--desktop {
-          display: none;
-      }
+
   </style>
   <!--<template>
       <div id="companyname" style="">Cross Cut Property Services Inc.</div>
@@ -81,13 +70,13 @@
 
       },
       attached: function(){
-        var newEl = document.createElement("SCRIPT");
+      /*  var newEl = document.createElement("SCRIPT");
         newEl.type = "text/javascript";
         newEl.async = true;
         newEl.onload = function(){
           console.log("The script has dynamically loaded");
           $(function() {
-              $('.sticky').Stickyfill();
+              $('.sticky').Stickyfill();*/
 
               /*$('body').on('contextmenu', 'p', function(event) {
                   event.preventDefault();
@@ -113,10 +102,10 @@
               $('.js-bottom').on('mousedown', function() {
                   window.scrollTo((document.documentElement.scrollLeft || document.body.scrollLeft), (document.documentElement.scrollTop || document.body.scrollTop)+1);
               });*/
-          });
+      /*    });
         }
         newEl.src = "stickyfill/src/stickyfill.js";
-        document.getElementsByTagName("head")[0].appendChild(newEl);
+        document.getElementsByTagName("head")[0].appendChild(newEl);*/
 
       }
 

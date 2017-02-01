@@ -14,27 +14,40 @@
   <template>
         <style include="shared-styles"></style>
         <style is="custom-style">
+        :host{
+          display:block;
+          position:relative;
+        }
         .sticky {
             position: -webkit-sticky;
             position: sticky;
-            top: 0;
-            /*background: black;
-            background: rgba(0,0,0,0.8);
-            padding: 2em;
-            color: white;*/
+            top: 50.24px;
         }
+
         .sticky--desktop {
             display: none;
         }
-        </style>
 
+        @media screen and (min-width: 60em) {
+            .sticky--desktop {
+                display: block;
+            }
+
+            .sticky--mobile {
+                display: none;
+            }
+        }
+
+        </style>
         <div id="companyname" style="">Cross Cut Property Services Inc.</div>
+
         <cc-title-bar unitid="crosscutproperty/2016" id="titlebar">
           <!--###############################################################
           Declaration and Attention Getter / Anouncement
           Your graphic and primary customer view items load here
           ###################################################################-->
         </cc-title-bar>
+
         <cc-navigator class="sticky" attr-for-selected="data-route" id="navigator" selected="[[route]]" style="position:sticky; z-index:110 !important;top:50.24px;">
           <ul class="main-nav">
             <li class="top-level-link">
@@ -72,7 +85,6 @@
                       </p>
               </paper-material>
             </section>
-
             <section data-route="takeaction" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Take Action</h1>
@@ -87,9 +99,7 @@
                   <li><a href="{{baseUrl}}underconstruction">Provide Professional Endorsment</a></li>
                 </ul>
               </paper-material>
-
             </section>
-
             <section data-route="coveragearea" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Coverage Area</h1>
@@ -99,7 +109,6 @@
                       </p>
               </paper-material>
             </section>
-
             <section data-route="equipment" tabindex="-1" class="content-page">
               <paper-material elevation="1">
                   <h1 class="page-title" tabindex="-1">Equipment</h1>
@@ -109,7 +118,6 @@
                         </p>
               </paper-material>
             </section>
-
             <section data-route="services" tabindex="-1" class="content-page">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Our Services</h1>
@@ -175,13 +183,16 @@
       created: function(){
       },
       ready: function(){
-      console.log("cc-app is now ready");
+
       },
       attached: function(){
-      console.log("cc-app is now attached");
+        console.log('Our app is ready to rock!');
       }
     });
     window.addEventListener('WebComponentsReady', function() {
+      $(function() {
+         $('.sticky').Stickyfill();
+      });
       var app = document.querySelector('#app');
       app.baseUrl = '/';
 
@@ -192,10 +203,10 @@
         }
       };
 
-      app.addEventListener('dom-change', function() {
+      /*app.addEventListener('dom-change', function() {
         console.log('Our app is ready to rock!');
-      });
-      //console.dir(app);
+      });*/
+
       //setRoutes(app);
     });
   })();

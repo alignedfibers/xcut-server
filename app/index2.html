@@ -36,18 +36,8 @@ Share styles across scopes
   <style is="custom-style" include="shared-styles"></style>
 </head>
 <body unresolved id="mybody" style="">
-  <!--<div id="pageplaceholder">
-  <span id="browser-sync-binding">
-  <!--//*####################################################
-      browser-sync handles live reloads and refresh of all imports
-      - disabled in this production version for security reasons
-      use a serverside preprocessor to version name import directory
-      to update the href: for all imports - simple,secure, nothing fancy
-    ################################################*//
-  </span>-->
-<cc-app id="app"></cc-app>
-
-  <!-- build:js scripts/app.js -->
+  <cc-app id="app"></cc-app>
+<template is="dom-bind" id="app2"><div>something to stamp</div><!-- simple dom-bind kicks off dom-change event--></template>
   <script src="scripts/stickyfill.js"></script>
   <script src="scripts/app.js"></script>
   <script>
@@ -61,35 +51,11 @@ Share styles across scopes
 
   </script>
     <script>
-        $(function() {
-           // $('.sticky').Stickyfill();
-/*
-            $('body').on('contextmenu', 'p', function(event) {
-                event.preventDefault();
-                $(this).remove();
-            });
-
-            $('body').on('click', 'p', function() {
-                $(this).after($(this).clone());
-            });
-
-            $('.js-top').on('mousedown', function() {
-                window.scrollTo((document.documentElement.scrollLeft || document.body.scrollLeft), (document.documentElement.scrollTop || document.body.scrollTop)-1);
-            });
-
-            $('.js-left').on('mousedown', function() {
-                window.scrollTo((document.documentElement.scrollLeft || document.body.scrollLeft)-1, (document.documentElement.scrollTop || document.body.scrollTop));
-            });
-
-            $('.js-right').on('mousedown', function() {
-                window.scrollTo((document.documentElement.scrollLeft || document.body.scrollLeft)+1, (document.documentElement.scrollTop || document.body.scrollTop));
-            });
-
-            $('.js-bottom').on('mousedown', function() {
-                window.scrollTo((document.documentElement.scrollLeft || document.body.scrollLeft), (document.documentElement.scrollTop || document.body.scrollTop)+1);
-            });
-*/
-        });
+    window.addEventListener('WebComponentsReady', function() {
+      /*  $(function() {
+           $('.sticky').Stickyfill();
+        }); */
+    });
     </script>
 
   <!-- endbuild-->

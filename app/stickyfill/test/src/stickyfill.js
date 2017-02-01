@@ -1,4 +1,6 @@
+console.log("This should run");
 (function(doc, win) {
+  console.log("StickyFill IIFE");
     var watchArray = [],
         scroll,
         initialized = false,
@@ -30,7 +32,7 @@
             block.style.position = prefixes[i] + 'sticky';
         }
         catch(e) {}
-        if (block.style.position != '') {
+        if (block.style.position !== '') {
             seppuku();
         }
     }
@@ -39,6 +41,7 @@
 
     //commit seppuku!
     function seppuku() {
+      console.log("seppuku");
         init = add = rebuild = pause = stop = kill = noop;
     }
 
@@ -67,7 +70,7 @@
             rebuild();
             return;
         }
-        
+
         if (win.pageYOffset != scroll.top) {
             updateScrollPos();
             recalcAllPos();
@@ -114,6 +117,8 @@
     }
 
     function initElement(el) {
+      console.log("init element");
+      console.log(el);
         if (isNaN(parseFloat(el.computed.top)) || el.isCell || el.computed.display == 'none') return;
 
         el.inited = true;
@@ -160,7 +165,8 @@
 
     function switchElementMode(el, mode) {
         var nodeStyle = el.node.style;
-
+console.log("in switch ElementMode");
+console.log(el);
         switch (mode) {
             case 0:
                 nodeStyle.position = 'absolute';
@@ -231,7 +237,8 @@
             parentNode = node.parentNode,
             parentComputedStyle = getComputedStyle(parentNode),
             cachedPosition = node.style.position;
-
+console.log("in getElementParams");
+console.log(node);
         node.style.position = 'relative';
 
         var computed = {
@@ -267,7 +274,7 @@
             },
             nodeOffset = getElementOffset(node),
             parentOffset = getElementOffset(parentNode),
-            
+
             parent = {
                 node: parentNode,
                 css: {
@@ -383,11 +390,11 @@
         if (!initialized) return;
 
         deinitAll();
-        
+
         for (var i = watchArray.length - 1; i >= 0; i--) {
             watchArray[i] = getElementParams(watchArray[i].node);
         }
-        
+
         initAll();
     }
 
@@ -405,7 +412,7 @@
 
     function stop() {
         pause();
-        deinitAll(); 
+        deinitAll();
     }
 
     function kill() {
@@ -420,6 +427,8 @@
 
     function add(node) {
         //check if Stickyfill is already applied to the node
+        console.log("in add");
+        console.log(node);
         for (var i = watchArray.length - 1; i >= 0; i--) {
             if (watchArray[i].node === node) return;
         };
