@@ -8,7 +8,7 @@ html {
 body {
         display:block;
         position:relative;
-        min-width:100%
+        min-width:100%;
         width:100%;
         margin: 0px;
         min-height:100%;
@@ -17,9 +17,9 @@ body {
         padding-right:0px;
         padding-left:0px;
 margin-bottom:26.55%;
-        //padding-bottom:26.55%;//26.55%;
+        /*//padding-bottom:26.55%;//26.55%;
         //border:solid red 10px;
-        //margin:0px;
+        //margin:0px;*/
         font-family: 'Open Sans', sans-serif;
         background-color:rgba(40, 87, 40, 1) !important;
         height:auto;
@@ -357,4 +357,3 @@ Some useful helpers
      white-space: -o-pre-wrap !important;    /* Opera 7 */
      word-wrap: break-word !important;       /* Internet Explorer 5.5+ */
 }
-</style>
