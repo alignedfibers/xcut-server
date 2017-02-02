@@ -6,3 +6,15 @@ EXTERNAL_IMPORTS:"{
   load_async:true,
 
 }";
+
+
+/*@mixin test-mixin(){
+  display:block;
+}
+@function test-function(){
+  @return "{display:block;}"
+}
+.mytest{
+  @include test-mixin();
+  --test-var2016:unquote(test-function());
+}*/
