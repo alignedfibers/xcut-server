@@ -1,1 +1,1 @@
-nodemon -e scss -x "npm run build-css"
+screen -S watch-css-screen -d -m node-sass --watch scss --output app/styles/from_sass

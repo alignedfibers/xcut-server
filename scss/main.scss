@@ -1,3 +1,6 @@
+
+@import 'customizable';
+
 $simplevar: #fff;
 
 body {
@@ -6,5 +9,8 @@ position:relative;
 margin:0;
 background-color: $simplevar;
 padding:0;
-
+width:auto;
+height:auto;
+border:solid red 1px;
+background-color: blue;
 }
