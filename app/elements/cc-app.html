@@ -11,7 +11,7 @@
         <style is="custom-style">
         :host{
           /*These two styles should not be changed externally*/
-          display:inline-block !important;
+          display:block !important;
           position:"relative !important";
         }
         .sticky {
@@ -58,7 +58,7 @@
               <a data-route="coveragearea" href="{{baseUrl}}coveragearea"><span>Coverage Area</span></a>
             </li>
             <li class="top-level-link">
-              <a data-route="services" href="{{baseUrl}}services"><span>Our Services</span></a>
+              <a data-route="services" href="{{baseUrl}}ourservices"><span>Our Services</span></a>
             </li>
             <li class="top-level-link">
               <a data-route="equipment" href="{{baseUrl}}equipment"><span>Equipment</span></a>
@@ -133,7 +133,17 @@
 
 <!--#################-->
 
-
+<section data-route="ourservices" tabindex="-1" class="content-page">
+  <paper-material elevation="1">
+    <h1 class="page-title" tabindex="-1">Our Services</h1>
+    <ul>
+      <li><a href="{{baseUrl}}underconstruction">Seasonal Cleanup, Yard Wast Collection and Disposal</a></li>
+      <li><a href="{{baseUrl}}underconstruction">Herbicide / Fertilizer Application and Manual Weed Control</a></li>
+      <li><a href="{{baseUrl}}underconstruction">Weekly Lawn Maintenance, Trimming and Traffic Area Clearance </a></li>
+      <li><a href="{{baseUrl}}underconstruction">Open Lot and Wild Growth Maintenance</a></li>
+    </ul>
+  </paper-material>
+</section>
 <!--#################-->
 
 

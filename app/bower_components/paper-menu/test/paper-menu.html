@@ -1,3 +1,4 @@
+<!doctype html>
 <!--
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -7,96 +8,57 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
+<html>
+  <head>
 
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../iron-menu-behavior/iron-menu-behavior.html">
-<link rel="import" href="../paper-styles/default-theme.html">
-<link rel="import" href="../paper-styles/color.html">
-<link rel="import" href="paper-menu-shared-styles.html">
+    <title>paper-menu tests</title>
 
-<!--
-Material design: [Menus](https://www.google.com/design/spec/components/menus.html)
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-`<paper-menu>` implements an accessible menu control with Material Design styling. The focused item
-is highlighted, and the selected item has bolded text.
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 
-    <paper-menu>
-      <paper-item>Item 1</paper-item>
-      <paper-item>Item 2</paper-item>
-    </paper-menu>
+    <script src="../../web-component-tester/browser.js"></script>
+    <link rel="import" href="../paper-menu.html">
 
-An initial selection can be specified with the `selected` attribute.
+  </head>
+  <body>
 
-    <paper-menu selected="0">
-      <paper-item>Item 1</paper-item>
-      <paper-item>Item 2</paper-item>
-    </paper-menu>
+    <test-fixture id="basic">
+      <template>
+        <paper-menu>
+          <div>item 1</div>
+          <div>item 2</div>
+          <div>item 3</div>
+        </paper-menu>
+      </template>
+    </test-fixture>
 
-Make a multi-select menu with the `multi` attribute. Items in a multi-select menu can be deselected,
-and multiple items can be selected.
+    <script>
 
-    <paper-menu multi>
-      <paper-item>Item 1</paper-item>
-      <paper-item>Item 2</paper-item>
-    </paper-menu>
+      suite('<paper-menu>', function() {
+        var menu;
 
-### Styling
+        setup(function() {
+          menu = fixture('basic');
+        });
 
-The following custom properties and mixins are available for styling:
+        test('selected item is styled', function() {
 
-Custom property | Description | Default
-----------------|-------------|----------
-`--paper-menu-background-color`   | Menu background color                                            | `--primary-background-color`
-`--paper-menu-color`              | Menu foreground color                                            | `--primary-text-color`
-`--paper-menu-disabled-color`     | Foreground color for a disabled item                             | `--disabled-text-color`
-`--paper-menu`                    | Mixin applied to the menu                                        | `{}`
-`--paper-menu-selected-item`      | Mixin applied to the selected item                               | `{}`
-`--paper-menu-focused-item`       | Mixin applied to the focused item                                | `{}`
-`--paper-menu-focused-item-after` | Mixin applied to the ::after pseudo-element for the focused item | `{}`
+          var boldDiv = document.createElement('div');
+          boldDiv.style.fontWeight = 'bold';
+          document.body.appendChild(boldDiv);
 
-### Accessibility
+          menu.selected = 1;
 
-`<paper-menu>` has `role="menu"` by default. A multi-select menu will also have
-`aria-multiselectable` set. It implements key bindings to navigate through the menu with the up and
-down arrow keys, esc to exit the menu, and enter to activate a menu item. Typing the first letter
-of a menu item will also focus it.
+          assert.equal(getComputedStyle(menu.selectedItem).fontWeight,
+              getComputedStyle(boldDiv).fontWeight, 'selected item is bold');
+        });
 
-@group Paper Elements
-@element paper-menu
-@hero hero.svg
-@demo demo/index.html
--->
-
-<dom-module id="paper-menu">
-  <template>
-    <style include="paper-menu-shared-styles"></style>
-    <style>
-      :host {
-        display: block;
-        padding: 8px 0;
-
-        background: var(--paper-menu-background-color, --primary-background-color);
-        color: var(--paper-menu-color, --primary-text-color);
-
-        @apply(--paper-menu);
-      }
-    </style>
-
-    <div class="selectable-content">
-      <content></content>
-    </div>
-  </template>
-
-  <script>
-    (function() {
-      Polymer({
-        is: 'paper-menu',
-
-        behaviors: [
-          Polymer.IronMenuBehavior
-        ]
       });
-    })();
-  </script>
-</dom-module>
+
+    </script>
+
+  </body>
+</html>

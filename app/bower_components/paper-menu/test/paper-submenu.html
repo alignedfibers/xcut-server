@@ -1,3 +1,4 @@
+<!doctype html>
 <!--
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -7,225 +8,196 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
+<html>
+  <head>
 
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-menu-behavior/iron-menu-behavior.html">
-<link rel="import" href="../iron-behaviors/iron-control-state.html">
-<link rel="import" href="../iron-collapse/iron-collapse.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../paper-styles/default-theme.html">
-<link rel="import" href="../paper-styles/color.html">
-<link rel="import" href="paper-menu-shared-styles.html">
+    <title>paper-submenu tests</title>
 
-<!--
-`<paper-submenu>` is a nested menu inside of a parent `<paper-menu>`. It
-consists of a trigger that expands or collapses another `<paper-menu>`:
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
-    <paper-menu>
-      <paper-submenu>
-        <paper-item class="menu-trigger">Topics</paper-item>
-        <paper-menu class="menu-content">
-          <paper-item>Topic 1</paper-item>
-          <paper-item>Topic 2</paper-item>
-          <paper-item>Topic 3</paper-item>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../iron-test-helpers/mock-interactions.js"></script>
+
+    <link rel="import" href="../../paper-item/paper-item.html">
+    <link rel="import" href="../paper-menu.html">
+    <link rel="import" href="../paper-submenu.html">
+
+  </head>
+  <style>
+    paper-item {
+      font-weight: normal;
+    }
+  </style>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <paper-menu>
+          <paper-submenu>
+            <paper-item class="menu-trigger">Topic 1</paper-item>
+            <paper-menu class="menu-content">
+              <paper-item>item 1.1</paper-item>
+              <paper-item>item 1.2</paper-item>
+              <paper-item>item 1.3</paper-item>
+            </paper-menu>
+          </paper-submenu>
+          <paper-submenu>
+            <paper-item class="menu-trigger">Topic 2</paper-item>
+            <paper-menu class="menu-content">
+              <paper-item>item 2.1</paper-item>
+              <paper-item>item 2.2</paper-item>
+              <paper-item>item 2.3</paper-item>
+            </paper-menu>
+          </paper-submenu>
+          <paper-submenu disabled>
+            <paper-item class="menu-trigger">Topic 3</paper-item>
+            <paper-menu class="menu-content">
+              <paper-item>item 3.1</paper-item>
+              <paper-item>item 3.2</paper-item>
+              <paper-item>item 3.3</paper-item>
+            </paper-menu>
+          </paper-submenu>
         </paper-menu>
-      </paper-submenu>
-      <paper-submenu>
-        <paper-item class="menu-trigger">Faves</paper-item>
-        <paper-menu class="menu-content">
-          <paper-item>Fave 1</paper-item>
-          <paper-item>Fave 2</paper-item>
-        </paper-menu>
-      </paper-submenu>
-      <paper-submenu disabled>
-        <paper-item class="menu-trigger">Unavailable</paper-item>
-        <paper-menu class="menu-content">
-          <paper-item>Disabled 1</paper-item>
-          <paper-item>Disabled 2</paper-item>
-        </paper-menu>
-      </paper-submenu>
-    </paper-menu>
+      </template>
+    </test-fixture>
 
-Just like in `<paper-menu>`, the focused item is highlighted, and the selected
-item has bolded text. Please see the `<paper-menu>` docs for which attributes
-(such as `multi` and `selected`), and styling options are available for the
-`menu-content` menu.
+    <script>
 
-@group Paper Elements
-@element paper-submenu
-@hero hero.svg
-@demo demo/index.html
--->
+      suite('<paper-submenu>', function() {
+        var menu,
+            sub1, sub2, sub3,
+            collapse1, collapse2, collapse3,
+            trigger1, trigger2, trigger3;
 
-<dom-module id="paper-submenu">
-  <template>
-    <style include="paper-menu-shared-styles"></style>
+        setup(function() {
+          menu = fixture('basic');
 
-    <div class="selectable-content" on-tap="_onTap">
-      <content id="trigger" select=".menu-trigger"></content>
-    </div>
-    <iron-collapse id="collapse" opened="{{opened}}">
-      <content id="content" select=".menu-content"></content>
-    </iron-collapse>
-  </template>
+          sub1 = menu.querySelectorAll('paper-submenu')[0];
+          sub2 = menu.querySelectorAll('paper-submenu')[1];
+          sub3 = menu.querySelectorAll('paper-submenu')[2];
 
-  <script>
+          collapse1 = Polymer.dom(sub1.root).querySelector('iron-collapse');
+          collapse2 = Polymer.dom(sub2.root).querySelector('iron-collapse');
+          collapse3 = Polymer.dom(sub3.root).querySelector('iron-collapse');
 
-  (function() {
+          trigger1 = sub1.querySelector('.menu-trigger');
+          trigger2 = sub2.querySelector('.menu-trigger');
+          trigger3 = sub3.querySelector('.menu-trigger');
+        });
 
-    Polymer({
+        test('selecting an item expands the submenu', function() {
+          assert.isFalse(collapse1.opened);
+          assert.isFalse(collapse2.opened);
+          assert.isFalse(collapse3.opened);
 
-      is: 'paper-submenu',
+          MockInteractions.tap(trigger1);
 
-      properties: {
-        /**
-         * Fired when the submenu is opened.
-         *
-         * @event paper-submenu-open
-         */
+          assert.isTrue(collapse1.opened);
+          assert.isFalse(collapse2.opened);
+          assert.isFalse(collapse3.opened);
+        });
 
-        /**
-         * Fired when the submenu is closed.
-         *
-         * @event paper-submenu-close
-         */
+        test('selecting a different item closes the previously opened submenu', function() {
+          assert.isFalse(collapse1.opened);
+          assert.isFalse(collapse2.opened);
+          assert.isFalse(collapse3.opened);
 
-        /**
-         * Set opened to true to show the collapse element and to false to hide it.
-         *
-         * @attribute opened
-         */
-        opened: {
-          type: Boolean,
-          value: false,
-          notify: true,
-          observer: '_openedChanged'
-        }
-      },
+          MockInteractions.tap(trigger1);
 
-      behaviors: [
-        Polymer.IronControlState
-      ],
+          assert.isTrue(collapse1.opened);
+          assert.isFalse(collapse2.opened);
+          assert.isFalse(collapse3.opened);
 
-      listeners: {
-        'focus': '_onFocus'
-      },
+          MockInteractions.tap(trigger2);
 
-      get __parent() {
-        return Polymer.dom(this).parentNode;
-      },
+          assert.isFalse(collapse1.opened);
+          assert.isTrue(collapse2.opened);
+          assert.isFalse(collapse3.opened);
+        });
 
-      get __trigger() {
-        return Polymer.dom(this.$.trigger).getDistributedNodes()[0];
-      },
+        test('cannot open a disabled submenu', function() {
+          assert.isFalse(collapse1.opened);
+          assert.isFalse(collapse2.opened);
+          assert.isFalse(collapse3.opened);
 
-      get __content() {
-        return Polymer.dom(this.$.content).getDistributedNodes()[0];
-      },
+          MockInteractions.tap(trigger3);
 
-      attached: function() {
-        this.listen(this.__parent, 'iron-activate', '_onParentIronActivate');
-      },
+          assert.isFalse(collapse1.opened);
+          assert.isFalse(collapse2.opened);
+          assert.isFalse(collapse3.opened);
+        });
 
-      dettached: function() {
-        this.unlisten(this.__parent, 'iron-activate', '_onParentIronActivate');
-      },
+        test('selecting an item styles it and the parent', function() {
+          var boldDiv = document.createElement('div');
+          boldDiv.style.fontWeight = 'bold';
+          document.body.appendChild(boldDiv);
 
-      /**
-       * Expand the submenu content.
-       */
-      open: function() {
-        if (!this.disabled && !this._active) {
-          this.$.collapse.show();
-          this._active = true;
-          this.__trigger && this.__trigger.classList.add('iron-selected');
-          this.__content && this.__content.focus();
-        }
-      },
+          var normalDiv = document.createElement('div');
+          normalDiv.style.fontWeight = 'normal';
+          document.body.appendChild(normalDiv);
 
-      /**
-       * Collapse the submenu content.
-       */
-      close: function() {
-        if (this._active) {
-          this.$.collapse.hide();
-          this._active = false;
-          this.__trigger && this.__trigger.classList.remove('iron-selected');
-        }
-      },
+          assert.equal(getComputedStyle(trigger1).fontWeight, getComputedStyle(normalDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger2).fontWeight, getComputedStyle(normalDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger3).fontWeight, getComputedStyle(normalDiv).fontWeight);
 
-      /**
-       * Toggle the submenu.
-       */
-      toggle: function() {
-        if (this._active) {
-          this.close();
-        } else {
-          this.open();
-        }
-      },
+          var item1 = sub1.querySelector('.menu-content').querySelector('paper-item');
 
-      /**
-       * A handler that is called when the trigger is tapped.
-       */
-      _onTap: function(e) {
-        if (!this.disabled) {
-          this.toggle();
-        }
-      },
+          MockInteractions.tap(trigger1);
+          // Nothing is initially selected.
+          assert.equal(getComputedStyle(item1).fontWeight, getComputedStyle(normalDiv).fontWeight);
+          MockInteractions.tap(item1);
 
-      /**
-       * Toggles the submenu content when the trigger is tapped.
-       */
-      _openedChanged: function(opened, oldOpened) {
-        if (opened) {
-          this.fire('paper-submenu-open');
-        } else if (oldOpened != null) {
-          this.fire('paper-submenu-close');
-        }
-      },
+          assert.equal(getComputedStyle(item1).fontWeight, getComputedStyle(boldDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger1).fontWeight, getComputedStyle(boldDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger2).fontWeight, getComputedStyle(normalDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger3).fontWeight, getComputedStyle(normalDiv).fontWeight);
+        });
 
-      /**
-       * A handler that is called when `iron-activate` is fired.
-       *
-       * @param {CustomEvent} event An `iron-activate` event.
-       */
-      _onParentIronActivate: function(event) {
-        var parent = this.__parent;
-        if (Polymer.dom(event).localTarget === parent) {
-          // The activated item can either be this submenu, in which case it
-          // should be expanded, or any of the other sibling submenus, in which
-          // case this submenu should be collapsed.
-          if (event.detail.item !== this && !parent.multi) {
-            this.close();
-          }
-        }
-      },
+        test('selecting a new item de-styles the previous one', function() {
+          var boldDiv = document.createElement('div');
+          boldDiv.style.fontWeight = 'bold';
+          document.body.appendChild(boldDiv);
 
-      /**
-       * If the dropdown is open when disabled becomes true, close the
-       * dropdown.
-       *
-       * @param {boolean} disabled True if disabled, otherwise false.
-       */
-      _disabledChanged: function(disabled) {
-        Polymer.IronControlState._disabledChanged.apply(this, arguments);
-        if (disabled && this._active) {
-          this.close();
-        }
-      },
+          var normalDiv = document.createElement('div');
+          normalDiv.style.fontWeight = 'normal';
+          document.body.appendChild(normalDiv);
 
-      /**
-       * Handler that is called when the menu receives focus.
-       *
-       * @param {FocusEvent} event A focus event.
-       */
-      _onFocus: function(event) {
-        this.__trigger && this.__trigger.focus();
-      }
+          assert.equal(getComputedStyle(trigger1).fontWeight, getComputedStyle(normalDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger2).fontWeight, getComputedStyle(normalDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger3).fontWeight, getComputedStyle(normalDiv).fontWeight);
 
-    });
+          var item1 = sub1.querySelector('.menu-content').querySelector('paper-item');
+          var item2 = sub2.querySelector('.menu-content').querySelector('paper-item');
 
-  })();
-</script>
-</dom-module>
+          MockInteractions.tap(trigger1);
+          MockInteractions.tap(item1);
+          MockInteractions.tap(trigger2);
+          MockInteractions.tap(item2);
+
+          // Both children are still selected even though the first one is hidden.
+          assert.equal(getComputedStyle(item1).fontWeight, getComputedStyle(boldDiv).fontWeight);
+          assert.equal(getComputedStyle(item2).fontWeight, getComputedStyle(boldDiv).fontWeight);
+
+          assert.equal(getComputedStyle(trigger1).fontWeight, getComputedStyle(normalDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger2).fontWeight, getComputedStyle(boldDiv).fontWeight);
+          assert.equal(getComputedStyle(trigger3).fontWeight, getComputedStyle(normalDiv).fontWeight);
+        });
+
+        test('focus a submenu should redirect focus to the trigger', function(done) {
+          MockInteractions.focus(sub1);
+          flush(function() {
+            assert.equal(sub1.shadowRoot ? sub1.shadowRoot.activeElement :
+                document.activeElement, sub1.__trigger);
+            done();
+          });
+        });
+      });
+
+    </script>
+
+  </body>
+</html>
