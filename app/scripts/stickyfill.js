@@ -463,7 +463,6 @@ console.log("stickyfillloaded");
 
 //if jQuery is available -- create a plugin
 if (window.jQuery) {
-  console.log("what the jquery");
     (function($) {
         $.fn.Stickyfill = function(options) {
             this.each(function() {
@@ -473,17 +472,4 @@ if (window.jQuery) {
             return this;
         };
     })(window.jQuery);
-}else {
-  console.log("what the not jquery");
-
-  window.Sticky = function(){
-
-    var watchels = document.querySelectorAll(".sticky");
-    console.log(watchels);
-    console.log(watchels.length);
-
-    watchels.forEach(function(element){
-        Stickyfill.add(element);
-    });
-  };
 }

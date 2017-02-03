@@ -221,9 +221,9 @@
       }
     });
     window.addEventListener('WebComponentsReady', function() {
-      (function() {
-        Sticky();
-      })();
+      $(function() {
+           $('.sticky').Stickyfill();
+        });
       var app = document.querySelector('#app');
       app.baseUrl = '/polymer_crosscut_clientsite/app/index.html/';
       if (window.location.port === '' || window.location.port === '443') {  // if production
