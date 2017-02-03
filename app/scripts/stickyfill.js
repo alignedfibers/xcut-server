@@ -1,3 +1,5 @@
+console.log("stickyfillloaded");
+
 (function(doc, win) {
     var watchArray = [],
         scroll,
@@ -67,7 +69,7 @@
             rebuild();
             return;
         }
-        
+
         if (win.pageYOffset != scroll.top) {
             updateScrollPos();
             recalcAllPos();
@@ -267,7 +269,7 @@
             },
             nodeOffset = getElementOffset(node),
             parentOffset = getElementOffset(parentNode),
-            
+
             parent = {
                 node: parentNode,
                 css: {
@@ -383,11 +385,11 @@
         if (!initialized) return;
 
         deinitAll();
-        
+
         for (var i = watchArray.length - 1; i >= 0; i--) {
             watchArray[i] = getElementParams(watchArray[i].node);
         }
-        
+
         initAll();
     }
 
@@ -405,7 +407,7 @@
 
     function stop() {
         pause();
-        deinitAll(); 
+        deinitAll();
     }
 
     function kill() {
@@ -461,6 +463,7 @@
 
 //if jQuery is available -- create a plugin
 if (window.jQuery) {
+  console.log("what the jquery");
     (function($) {
         $.fn.Stickyfill = function(options) {
             this.each(function() {
@@ -470,5 +473,17 @@ if (window.jQuery) {
             return this;
         };
     })(window.jQuery);
-}
+}else {
+  console.log("what the not jquery");
 
+  window.Sticky = function(){
+
+    var watchels = document.querySelectorAll(".sticky");
+    console.log(watchels);
+    console.log(watchels.length);
+
+    watchels.forEach(function(element){
+        Stickyfill.add(element);
+    });
+  };
+}

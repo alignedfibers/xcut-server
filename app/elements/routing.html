@@ -2,55 +2,44 @@
 <script src="../bower_components/page/page.js"></script>
 <script>
   window.addEventListener('WebComponentsReady', function() {
-    //var setRoutes = function(app){
-    // We use Page.js for routing. This is a Micro
-    // client-side router inspired by the Express router
-    // More info: https://visionmedia.github.io/page.js/
-    //console.log(app.baseUrl);
-    //app.baseUrl = "/";
-    // Removes end / from app.baseUrl which page.base requires for production
-    if (window.location.port === '') {  // if production
-      console.log(app.baseUrl);
+    if (window.location.port === '' || window.location.port === '31999') {  // if production
       page.base(app.baseUrl.replace(/\/$/, ''));
-    }
-
-    // Middleware
-    /*function scrollToTop(ctx, next) {
-      app.scrollPageToTop();
-      next();
-    }*/
-
-    function closeDrawer(ctx, next) {
-      app.closeDrawer();
-      next();
     }
 
     function setFocus(selected){
       document.querySelector('section[data-route="' + selected + '"] .page-title').focus();
     }
 
-    // Routes
-    /*page('*', scrollToTop, function(ctx, next) {
-      next();
-    });*/
+   page('/take_action', function() {
+      app.route = 'take_action';
+      setFocus(app.route);
+    });
+
+    page('/cc_services', function() {
+      app.route = 'cc_services';
+      setFocus(app.route);
+    });
 
     page('/', function() {
       app.route = 'home';
       setFocus(app.route);
     });
+
     page('/home', function() {
       app.route = 'home';
       setFocus(app.route);
     });
 
-    page(app.baseUrl, function() {
+    /*page(app.baseUrl, function() {
       app.route = 'home';
       setFocus(app.route);
-    });
+    });*/
+
     page('/takeaction', function() {
       app.route = 'takeaction';
       setFocus(app.route);
     });
+
     page('/coveragearea', function() {
       app.route = 'coveragearea';
       setFocus(app.route);
@@ -62,10 +51,6 @@
       setFocus(app.route);
     });
 
-    page('/services', function() {
-      app.route = 'services';
-      setFocus(app.route);
-    });
     page('/underconstruction', function() {
       app.route = 'underconstruction';
       setFocus(app.route);
@@ -77,14 +62,17 @@
       app.$.toast.show();
       page.redirect(app.baseUrl);
     });
+
     page_config = (function(){
       var hashbang = (window.location.port === '' ? false : true)
+      console.log(hashbang);
       return {
         hashbang:hashbang
       }
     })();
+
     // add #! before urls
-    page(page_config);
+    page({hashbang:true});
 
   });
 </script>

@@ -52,7 +52,7 @@
               <a data-route="home" href="{{baseUrl}}home"><span>Home</span></a>
             </li>
             <li class="top-level-link">
-              <a data-route="takeaction" href="{{baseUrl}}takeaction"><span>Take Action</span></a>
+              <a data-route="takeaction" href="{{baseUrl}}take_action"><span>Take Action</span></a>
             </li>
             <li class="top-level-link">
               <a data-route="coveragearea" href="{{baseUrl}}coveragearea"><span>Coverage Area</span></a>
@@ -68,9 +68,10 @@
 
         <!-- Main Content -->
         <div class="content" id="page-container" style="">
-          <iron-pages attr-for-selected="data-route" selected="{{route}}" style="z-index:70 !important; margin:0px !important; padding:0px !important;height:auto !important;">
-            <section data-route="home" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
+          <iron-pages attr-for-selected="data-route" selected="{{route}}" style="z-index:70"> <!-- !important; margin:0px !important; padding:0px !important;height:auto !important;">-->
 
+<!--#################-->
+            <section data-route="home" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Home</h1>
                       <p>
@@ -83,7 +84,54 @@
                       </p>
               </paper-material>
             </section>
-            <section data-route="takeaction" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
+
+<!--#################-->
+            <section data-route="services" tabindex="-1" class="content-page">
+              <paper-material elevation="1">
+                <h1 class="page-title" tabindex="-1">Our Services</h1>
+                <ul>
+                  <li><a href="{{baseUrl}}underconstruction">Seasonal Cleanup, Yard Wast Collection and Disposal</a></li>
+                  <li><a href="{{baseUrl}}underconstruction">Herbicide / Fertilizer Application and Manual Weed Control</a></li>
+                  <li><a href="{{baseUrl}}underconstruction">Weekly Lawn Maintenance, Trimming and Traffic Area Clearance </a></li>
+                  <li><a href="{{baseUrl}}underconstruction">Open Lot and Wild Growth Maintenance</a></li>
+                </ul>
+              </paper-material>
+            </section>
+
+<!--#################-->
+            <section data-route="take_action" tabindex="-1" class="content-page">
+              <paper-material elevation="1">
+                <h1 class="page-title" tabindex="-1">Take Action</h1>
+                <p><h3></h3>To strengthen outstanding service, client relationships, customer satisfaction and facilitate exceptional experience the $
+                   provided for our clients, and professional network as well as ourselves to manage and organize our mowing routes, connect with oth$
+                </p>
+                <ul>
+                  <li><a href="{{baseUrl}}underconstruction">Start A Quote</a></li>
+                  <li><a href="{{baseUrl}}underconstruction">Write A Review</a></li>
+                  <li><a href="{{baseUrl}}underconstruction">Get Social + Connect</a></li>
+                  <li><a href="{{baseUrl}}underconstruction">Add to Contact List</a></li>
+                  <li><a href="{{baseUrl}}underconstruction">Provide Professional Endorsment</a></li>
+                </ul>
+              </paper-material>
+            </section>
+
+<!--#################-->
+            <section data-route="coveragearea" tabindex="-1" class="content-page">
+              <paper-material elevation="1">
+                <h1 class="page-title" tabindex="-1">Coverage Area</h1>
+                      <p>We service the Twincities, Metropolitan and Extended Areas completing weekly routes throughout
+                        Minneapolis, Saint Paul NE and NW suburbs. Our service area is increasing, please call Rick Zobel
+                        at 763-234-7869 or complete our
+                         Our service area is increasing, please call Rick Zobel at 763-234-7869 or complete our
+<a href="{{baseUrl}}underconstruction">online quote request here</a>
+to go over details and find a service schedule. We follow up on all quote requests submitted via online tool and are happy
+ to take your call.
+                      </p>
+              </paper-material>
+            </section>
+
+<!--#################-->
+            <section data-route="takeaction" tabindex="-1" class="content-page">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Take Action</h1>
                 <p><h3></h3>To strengthen outstanding service, client relationships, customer satisfaction and facilitate exceptional experience the following action tools have been
@@ -98,25 +146,21 @@
                 </ul>
               </paper-material>
             </section>
-            <section data-route="coveragearea" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
+
+<!--#################-->
+            <section data-route="coveragearea" tabindex="-1" class="content-page">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Coverage Area</h1>
                       <p>We service the Twincities, Metropolitan and Extended Areas completing weekly routes throughout Minneapolis, Saint Paul, NE and NW suburbs.
-                         Our service area is increasing, please call Rick Zobel at 763-234-7869 or complete our <a href="{{baseUrl}}underconstruction">start quote process here </a>
+                         Our service area is increasing, please call Rick Zobel at 763-234-7869 or complete our
+<a href="{{baseUrl}}underconstruction"> start quote process here </a>
                          to go over details and find a service schedule. We follow up on all quote requests submitted via online tool and are happy to take your call.
                       </p>
               </paper-material>
             </section>
-            <section data-route="equipment" tabindex="-1" class="content-page">
-              <paper-material elevation="1">
-                  <h1 class="page-title" tabindex="-1">Equipment</h1>
-                        <p>Outstanding and well maintained equipment is key to a job done right. One of our jobs is to ensure all Tools and Equipment are in optimum condition.
-                           We use best in class zero turn lawn mowers, weedwhips, leaf blowers, bagging and collection aparatus. We take pride in our tools employing equipment
-                           from makers such as: Toro, Gravely, Husqavarna,
-                        </p>
-              </paper-material>
-            </section>
-            <section data-route="services" tabindex="-1" class="content-page">
+
+<!--#################-->
+            <section data-route="cc_services" tabindex="-1" class="content-page">
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Our Services</h1>
                 <ul>
@@ -127,7 +171,20 @@
                 </ul>
               </paper-material>
             </section>
-            <section data-route="underconstruction" tabindex="-1" class="content-page" style="margin:0px;padding:0px;">
+
+<!--#################-->
+            <section data-route="equipment" tabindex="-1" class="content-page">
+              <paper-material elevation="1">
+                  <h1 class="page-title" tabindex="-1">Equipment</h1>
+                        <p>Outstanding and well maintained equipment is key to a job done right. One of our jobs is to ensure all Tools and Equipment are in optimum condition.
+                           We use best in class zero turn lawn mowers, weedwhips, leaf blowers, bagging and collection aparatus. We take pride in our tools employing equipment
+                           from makers such as: Toro, Gravely, Husqavarna,
+                        </p>
+              </paper-material>
+            </section>
+
+<!--#################-->
+            <section data-route="underconstruction" tabindex="-1" class="content-page">
               <paper-material elevation="1">
                 <div style="float:left;max-width:600px;">
                   <h1 class="page-title" tabindex="-1">Under Construction</h1>
@@ -138,6 +195,7 @@
                 <div style="display:block; clear:both"></div>
               </paper-material>
             </section>
+
           </iron-pages>
         </div>
     <div id="outro"><span id="thankyou">Thank you for visiting & hope to see you soon. Call Rick Zobel, 763-234-7869 to learn more</span></div>
@@ -188,11 +246,14 @@
       }
     });
     window.addEventListener('WebComponentsReady', function() {
-      $(function() {
-         $('.sticky').Stickyfill();
-      });
+      (function() {
+        Sticky();
+      })();
       var app = document.querySelector('#app');
-      app.baseUrl = '/';
+      app.baseUrl = '/polymer_crosscut_clientsite/app/index.html/';
+      if (window.location.port === '' || window.location.port === '443') {  // if production
+        app.baseUrl = '/';
+      }
 
       app.displayInstalledToast = function() {
         // Check to make sure caching is actually enabled—it won't be in the dev environment.
