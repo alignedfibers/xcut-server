@@ -10,13 +10,8 @@
       document.querySelector('section[data-route="' + selected + '"] .page-title').focus();
     }
 
-   page('/take_action', function() {
-      app.route = 'take_action';
-      setFocus(app.route);
-    });
-
-    page('/cc_services', function() {
-      app.route = 'cc_services';
+   page('/takeaction', function() {
+      app.route = 'takeaction';
       setFocus(app.route);
     });
 
@@ -34,11 +29,6 @@
       app.route = 'home';
       setFocus(app.route);
     });*/
-
-    page('/takeaction', function() {
-      app.route = 'takeaction';
-      setFocus(app.route);
-    });
 
     page('/coveragearea', function() {
       app.route = 'coveragearea';
@@ -72,7 +62,7 @@
     })();
 
     // add #! before urls
-    page({hashbang:true});
+    page(page_config);
 
   });
 </script>
