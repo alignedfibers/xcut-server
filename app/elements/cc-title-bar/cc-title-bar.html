@@ -1,267 +1,240 @@
-<!-- -->
-
+<!doctype html>
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="cc-title-bar">
   <template>
     <style>
-        :host:before{
-        /**********************************************
-            This is the header text at top the page
-        ***********************************************/
-            content: "Cross Cut Property Services Inc.";
-            display:block;
-            position: fixed;
-            z-index:13 !important;
-            top:0px;
-            left:0px;;
-            width:100%;
-            width: -webkit-calc(100% - 0px);
-            width:         calc(100% - 0px);    
-            height:auto;         
-            margin-top:10.24px;
-            margin-bottom:10.24px;
-	        font: 40px 'Arizonia', Helvetica, sans-serif;
-            font-weight: 100;
-	        color: #4c4c4c; //#000;//#4c4c4c;//#fff;//rgba(100, 256, 100, .6);
-	        //text-shadow: 1px 1px 3px rgba(100, 256, 100, .6);/; //rgba(100, 256, 100, .6);//rgba(0, 0, 0, 1); // rgba(255, 255, 255, 1);
-            background-color: rgba(255, 255, 255, .4);
+/****************************************************************************************************/
+        :host {
+        	display:block;
+        	position: relative;
+          z-index:100;
+        	min-width: 100%;
+        	width: 100%;
+          min-height:26.55vw;
+          margin:0;
+          padding:0;
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
         }
-@media only screen and (max-width: 539px){
-      :host:before{
-            font: 30px 'Arizonia', Helvetica, sans-serif;      
-      }
-}
-@media only screen and (max-width: 419px){
-      :host:before{
-            font: 22px 'Arizonia', Helvetica, sans-serif;      
-      }
-}
-        :host{
-            display:block; 
-            position:relative; 
-            padding-bottom:26.55%;
-            /*border:solid red 5px;*/
-            z-index:100;
+        :host > ul {
+        	position: relative;
+        	z-index: 1;
         }
-        :host > #myCarousel{
-            display:block; 
-            /*z-index:888;*/
-            position:absolute;
-            top:0;left:0;bottom:0;right:0;
-            padding:0em;  
-            z-index: 11 !important;
-            width:100% !important;
-            min-width:100% !important;
-            height:auto !important;
-            /*border:solid lightblue 2px; */
-            clear:both; 
+        :host > ul > li.img img {
+          z-index:4;
+        	width: 100%;
         }
-        :host ol.carousel-indicators{
-            display:none !important;
+        :host > ul > li.img {
+          z-index:3;
+        	/*font-size: 0pt;
+        	-khtml-user-select: none;
+        	-moz-user-select: none;
+        	user-select: none;*/
         }
-        :host .carousel-inner{
-                width:100% !important;
-                height:auto;
-                //border:solid red 2px;
+        :host > ul > li {
+        	position: relative;
+        	display: inline-block;
+        	width: 100%;
+        	/*overflow: hidden;*/
+        	-webkit-box-sizing: border-box;
+        	-moz-box-sizing: border-box;
+        	box-sizing: border-box;
         }
-        :host .carousel-inner > .item > img,
-        .carousel-inner > .item > a > img{
-              width: 70%;
-              margin: auto;
+        :host > ul > li {
+          display: inline-block;
+        	position: absolute;
+        	left: 0;top: 0;
+          padding:0 !important;
+          margin:0 !important
+        	z-index: 1;
         }
-        :host .carousel-inner > div > img{
-                width:100% !important;
-                height:auto !important;
-                //border:solid white 2px !important;
-        }
-/*************************************************************************************************
-The following rules are used for the request quote link that had previously shown above images
 
-**************************************************************************************************
-div.pricequote-wrap{
-    display:block;
-    position:absolute;
-    top:75%;
-    left:50%;
- transform: translate(-50%, 0%);
-    margin:auto;
-    min-width:30%;    
-    width:20%;
-    padding-bottom: 10%;
-    height:0px;
-    //height:auto;
-    //border:solid red 2px;
-    text-align:center;
-    text-align:middle;
-    clear:both;
-    
-}
-div.subwrap{
-    //Helps with grouping sizing and positioning
-    display:block;
-    position:absolute;
-    top:0px;
-    left:0px;
-    padding:0 0 0 0;
-    margin: 0 0 0 0;
-    min-width:100%;
-    max-width:100%;
-    width:100%;
-    min-height:100%;
-    max-height:100%;
-    height:100%; 
-}
-div.pricequote-left{
-    display:inline-block;
-    width:48%;
-    margin-left:auto;
-    padding:0px;
-    margin-right:-3px;
-    //border:solid red 1px;
-    //border-radius: 50%;
-    border-radius: 150% 0 0 0;
-     -moz-border-radius: 150% 0 0 0;
-     -webkit-border-radius: 150% 0 0 0;
-  -webkit-background-clip: padding-box; 
-  -moz-background-clip:    padding; 
-  background-clip:         padding-box;
-     background:rgba(40, 87, 40, 1);
-    min-width:1rem;
-    height:100%; 
-    //min-height:10%; 
-    //background-color:rgba(227, 227, 227, .7);
-    //z-index:2000;
-}
-div.pricequote-right{
-    display:inline-block;
-    width:48%;
-    margin-right:auto;
-    padding:0px;
-    margin-left:-3px;
-    //border:solid red 1px;
-    //border-radius: 50%;
-    border-radius: 0 150% 0 0;
-     -moz-border-radius: 0 150% 0 0;
-     -webkit-border-radius: 0 150% 0 0;
-  -webkit-background-clip: padding-box; 
-  -moz-background-clip:    padding; 
-  background-clip:         padding-box;
-     background:rgba(40, 87, 40, 1);
-    min-width:1rem; 
-    height:100%;
-    //min-height:10%; 
-    //background-color:rgba(227, 227, 227, .7);
-    //z-index:2000;
-}
-div.quote-text{
-    display:block;
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:70%;
-    padding:0 0 0 0;
-    margin:0 0 0 0;
-    transform: translate(-50%, -50%);
-    //color:rgba(227, 227, 227, .2);
-    color:#4c4c4c;
-    background-color: rgba(255, 255, 255, .4);
-    font: 1rem 'Arizonia', Helvetica, sans-serif;
-    font-weight: 100;
-    //border:solid red 2px;   
-}
-div.quote-text:before{
-    content:" ";
-    display:block;
-    position:absolute;
-    top:50%;
-    left:0%;
-    transform: translate(-2px, -50%);
-	width: 0; 
-	height: 0; 
-	border-top: .7rem solid transparent;
-	border-bottom: .7rem solid transparent;
-	border-left: .5rem solid rgba(40, 87, 40, 1);
-    
-}
-div.quote-text:after{
-    content:" ";
-    display:block;
-    position:absolute;
-    top:50%;
-    right:0%;
-    transform: translate(2px, -50%);
-	width: 0; 
-	height: 0; 
-	border-top: .7rem solid transparent;
-	border-bottom: .7rem solid transparent;
-	border-right: .5rem solid rgba(40, 87, 40, 1);
-}
-
-.arrow-up {
-	width: 0; 
-	height: 0; 
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	
-	border-bottom: 5px solid black;
-}
-
-.arrow-down {
-	width: 0; 
-	height: 0; 
-	border-left: 20px solid transparent;
-	border-right: 20px solid transparent;
-	
-	border-top: 20px solid #f00;
-}
-****************************************************************************************************/
-
-        :host > #feeltheburn{
-            display:block; 
-            position:relative;
-            z-index:9;
+        @-webkit-keyframes slideleft2 {
+          0% { -webkit-transform: scale(1.004) translate(201%, 0%); z-index: 2; }
+          4.16666% {visibility:visible; -webkit-transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          20.828% { -webkit-transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          25% {-webkit-transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          41.664% {-webkit-transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          45.828% {-webkit-transform: scale(1.004) translate(-101%, 0%); z-index: 2; }
+          45.832% {visibility:hidden; -webkit-transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+          45.836% {visibility:hidden; -webkit-transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          62.496% {visibility: visible; -webkit-transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          66.668% {-webkit-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          95.832% {-webkit-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          100% {-webkit-transform:scale(1.004) translate(-101%,0%); z-index: 2;}
         }
+        @-moz-keyframes slideleft2 {
+          0% { -moz-transform: scale(1.004) translate(201%, 0%); z-index: 2; }
+          4.16666% {visibility:visible; -moz-transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          20.828% { -moz-transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          25% {-moz-transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          41.664% {-moz-transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          45.828% {-moz-transform: scale(1.004) translate(-101%, 0%); z-index: 2; }
+          45.832% {visibility:hidden; -moz-transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+          45.836% {visibility:hidden; -moz-transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          62.496% {visibility: visible; -moz-transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          66.668% {-moz-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          95.832% {-moz-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          100% {-moz-transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+        }
+        @-ms-keyframes slideleft2 {
+          0% { -ms-transform: scale(1.004) translate(201%, 0%); z-index: 2; }
+          4.16666% {visibility:visible; -ms-transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          20.828% { -ms-transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          25% {-ms-transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          41.664% {-ms-transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          45.828% {-ms-transform: scale(1.004) translate(-101%, 0%); z-index: 2; }
+          45.832% {visibility:hidden; -ms-transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+          45.836% {visibility:hidden; -ms-transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          62.496% {visibility: visible; -ms-transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          66.668% {-ms-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          95.832% {-ms-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          100% {-ms-transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+        }
+        @-o-keyframes slideleft2 {
+          0% { -0-transform: scale(1.004) translate(201%, 0%); z-index: 2; }
+          4.16666% {visibility:visible; -0-transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          20.828% { -0-transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          25% {-0-transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          41.664% {-0-transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          45.828% {-0-transform: scale(1.004) translate(-101%, 0%); z-index: 2; }
+          45.832% {visibility:hidden; -0-transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+          45.836% {visibility:hidden; -0-transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          62.496% {visibility: visible; -0-transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          66.668% {-0-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          95.832% {-0-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          100% {-0-transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+        }
+        @keyframes slideleft2 {
+          0% { transform: scale(1.004) translate(201%, 0%); z-index: 2; }
+          4.16666% {visibility:visible; transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          20.828% { transform: scale(1.004) translate(201%, 0%); z-index: 2;}
+          25% {transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          41.664% {transform:scale(1.004) translate(0%,0%); z-index: 2;}
+          45.828% {transform: scale(1.004) translate(-101%, 0%); z-index: 2; }
+          45.832% {visibility:hidden; transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+          45.836% {visibility:hidden; transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          62.496% {visibility: visible; transform:scale(1.004) translate(201%,0%); z-index: 2;}
+          66.668% {transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          95.832% {transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+          /*95.83% {transform:scale(1.004) translate(-101%,0%); z-index: 2;}*/
+          100% {transform:scale(1.004) translate(-101%,0%); z-index: 2;}
+        }
+
+        @-webkit-keyframes slideleft1 {
+        	85% {-webkit-transform: scale(1.004) translate(0%, 0%); z-index: 2; }
+        	100% {-webkit-transform: scale(1.004) translate(100%, 0%); z-index: 2; }
+          0% { -webkit-transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          4.16666% { -webkit-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          20.828% { -webkit-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          25% {-webkit-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.004% {visibility:hidden; -webkit-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.008% {visibility:hidden; -webkit-transform:scale(1.004) translate(201%,0%); z-index: 2;opacity: 1;}
+          41.664% {visibility:visible; -webkit-transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          45.828% { -webkit-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1; }
+          62.496% { -webkit-transform: scale(1.004) translate(0%, 0%); z-index: 2; opacity: 1;}
+          66.668% {-webkit-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          100% {-webkit-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+        }
+        @-moz-keyframes slideleft1 {
+          0% { -moz-transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          4.16666% { -moz-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          20.828% { -moz-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          25% {-moz-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.004% {visibility:hidden; -moz-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.008% {visibility:hidden; -moz-transform:scale(1.004) translate(201%,0%); z-index: 2;opacity: 1;}
+          41.664% {visibility:visible; -moz-transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          45.828% { -moz-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1; }
+          62.496% { -moz-transform: scale(1.004) translate(0%, 0%); z-index: 2; opacity: 1;}
+          66.668% {-moz-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          100% {-moz-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+        }*/
+        @-ms-keyframes slideleft1 {
+          0% { -ms-transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          4.16666% { -ms-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          20.828% { -ms-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          25% {-ms-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.004% {visibility:hidden; -ms-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.008% {visibility:hidden; -ms-transform:scale(1.004) translate(201%,0%); z-index: 2;opacity: 1;}
+          41.664% {visibility:visible; -ms-transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          45.828% { -ms-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1; }
+          62.496% { -ms-transform: scale(1.004) translate(0%, 0%); z-index: 2; opacity: 1;}
+          66.668% {-ms-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          100% {-ms-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+        }
+        @-o-keyframes slideleft1 {
+          0% { -o-transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          4.16666% { -o-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          20.828% { -o-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          25% {-o-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.004% {visibility:hidden; -o-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.008% {visibility:hidden; -o-transform:scale(1.004) translate(201%,0%); z-index: 2;opacity: 1;}
+          41.664% {visibility:visible; -o-transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          45.828% { -o-transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1; }
+          62.496% { -o-transform: scale(1.004) translate(0%, 0%); z-index: 2; opacity: 1;}
+          66.668% {-o-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          100% {-o-transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+        }
+        @keyframes slideleft1 {
+          0% { transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          4.16666% { transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          20.828% { transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1;}
+          25% {transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.004% {visibility:hidden; transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          25.008% {visibility:hidden; transform:scale(1.004) translate(201%,0%); z-index: 2;opacity: 1;}
+          41.664% {visibility:visible; transform: scale(1.004) translate(201%, 0%); z-index: 2;opacity: 1; }
+          45.828% { transform: scale(1.004) translate(0%, 0%); z-index: 2;opacity: 1; }
+          62.496% { transform: scale(1.004) translate(0%, 0%); z-index: 2; opacity: 1;}
+          66.668% {transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+          100% {transform:scale(1.004) translate(-101%,0%); z-index: 2;opacity: 1;}
+        }
+
+        :host > #play_toggle:checked ~ ul > li.num0,
+        :host > #play_toggle:checked ~ ul > li.num0 {
+        	-webkit-animation: slideleft2 24s ease-in-out 0s infinite;
+        	-moz-animation: slideleft2 24s ease-in-out 0s infinite;
+        	-ms-animation: slideleft2 24s ease-in-out 0s infinite;
+        	-o-animation: slideleft2 24s ease-in-out 0s infinite;
+        	animation: slideleft2 24s ease-in-out 0s infinite;
+
+        }
+        :host > #play_toggle:checked ~ ul > li.num1,
+        :host > #pause_toggle:checked ~ ul > li.num1 {
+          -webkit-animation: slideleft1 24s ease-in-out 0s infinite;
+        	-moz-animation: slideleft1 24s ease-in-out 0s infinite;
+        	-ms-animation: slideleft1 24s ease-in-out 0s infinite;
+        	-o-animation: slideleft1 24s ease-in-out 0s infinite;
+        	animation: slideleft1 24s ease-in-out 0s infinite;
+        }
+        .aspect_fill_26_55{
+          width: 100%;
+          visibility: hidden;
+          margin-bottom:24.55%;
+        }
+        .action_toggle{}
+        #play_toggle{
+          display:none;
+          visibility:hidden;
+          height:0px;
+          width:0px;
+        }
+/****************************************************************************************************/
     </style>
-            <!--#########################################################################
-            We would like to replace the bootstrap slider with a better alternative
-            #############################################################################-->
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox" style="margin-top:0em;padding-top:0em;">
-                    <div class="item active">
-                       <img src="../../images/equipslider/lawnequipsized.gif" alt="Lawn Equipment">
-                    </div>
-                    <div class="item">
-	                <img src="../../images/equipslider/snowequipsized.gif" alt="Snow Equipment"> 
-                    </div>  
-                    <!--<div class="pricequote-wrap">
-                        <div class="subwrap">
-                            <div class="pricequote-left" style=""></div>
-                            <div class="pricequote-right" style=""></div>   
-                            <div class="quote-text"><a href="#new-quote">Start A Quote</a></div> 
-                        </div>
-                    </div>-->                
-                </div>
-                <!-- Left and right controls -->
-                <a class="left carousel-control" style="background: transparent !important" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" style="background: transparent !important" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                <br>
-                <div style="clear:both"></div>
-            </div> 
+    <input class="action_toggle" id="play_toggle" type="radio" checked >
+    <ul><!--<div class="aspect_fill_26_55" style=""></div>-->
+      <li class="num0 img">
+        <img src="../../images/equipslider/lawnequipsized.gif"
+             alt="Lawn Equipment"
+             title="Lawn Equipment" />
+      </li>
+      <li class="num1 img">
+        <img src="../../images/equipslider/snowequipsized.gif"
+             alt="Snow Equipment"
+             title="Snow Equipment"/>
+      </li>
+    </ul>
   </template>
   <script>
   (function() {
@@ -277,8 +250,12 @@ div.quote-text:after{
           notify: true
         }
       },
-      ready: function(){},
-      attached: function(){}
+      created: function(){},
+      ready: function(){
+        this.classList.add('animation_container');
+      },
+      attached: function(){},
+      detached: function(){}
     });
   })();
   </script>

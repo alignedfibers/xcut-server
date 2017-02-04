@@ -4,7 +4,7 @@ For convenience
 function addKeyVal(key, val, obj){
       //requires that an object is passed in.
       obj[key] = val;
-    }    
+    }
 function emptyObj(){}
 /*##########################################
 Helper functions and Functions for when
@@ -33,7 +33,7 @@ function debounce(func, wait, immediate) {
       while(el){
         if (el.tagName == "BODY") {
           var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
-          var yScroll = el.scrollTop || document.documentElement.scrollTop;     
+          var yScroll = el.scrollTop || document.documentElement.scrollTop;
           _left += (el.offsetLeft - xScroll + el.clientLeft);
           _top += (el.offsetTop - yScroll + el.clientTop);
         }else{
@@ -51,7 +51,7 @@ function debounce(func, wait, immediate) {
    /*##############*/
   function getViewport() {
   //Find out more about this function here
-  // http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/ 
+  // http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/
      var viewPortWidth;
      var viewPortHeight;
      if (typeof window.innerWidth != 'undefined') {
@@ -71,8 +71,8 @@ function debounce(func, wait, immediate) {
      return {width:viewPortWidth, height:viewPortHeight};
   }
 /*##########################################
-Functions tied specifically to this page 
-dependent on element name, id, class and/or 
+Functions tied specifically to this page
+dependent on element name, id, class and/or
 location of elements on the page.
 ##########################*/
   function updatePosition() {
@@ -87,7 +87,7 @@ location of elements on the page.
         Outro = document.querySelector('#outro');
         OutroSpan = document.querySelector('#thankyou');
         /*##################
-        Take a snap shot of indexed elements 
+        Take a snap shot of indexed elements
         cur location relative to viewport
         ########################*/
         CompanyNameRect = getPosition(CompanyName);
@@ -110,7 +110,7 @@ location of elements on the page.
         }
         if(TitleBarRect.bottom >= NavigatorRect.top && NavigatorCurPositionProp == "fixed"){
             /*################################################
-            #If the element affected here is not soley wrapped in an element that has a fixed size and 
+            #If the element affected here is not soley wrapped in an element that has a fixed size and
             #maintains flow this request for layout and paint caused by the style changes could cause
             #a domino effect -- Note worthy if you need to do anything more drastic than this be careful
             ############################################*/
@@ -118,11 +118,11 @@ location of elements on the page.
             Navigator.style.top = "0px";
             Navigator.style.left = "0px";
             //Outro.style.background = "transparent";
-            OutroSpan.classList.remove('verticalTranslateUp'); 
-            OutroSpan.classList.add('verticalTranslateDown');   
+            OutroSpan.classList.remove('verticalTranslateUp');
+            OutroSpan.classList.add('verticalTranslateDown');
         }
   }
-  var updatePositionDebounced = debounce(updatePosition,14); 
+  var updatePositionDebounced = debounce(updatePosition,14);
   function setBodyPaddingRelViewPort(){
        //Body = document.querySelector("body");
        //Header = document. querySelector("cc-header");
@@ -155,7 +155,7 @@ return;
   function dealWithCSSQuirks(){
     //This function sets a css custom property to change its default
     //bottom position, should run only on screen resize and load
-    Root = document.body; 
+    Root = document.body;
     ThankYou = document.querySelector('#thankyou');
     ThankYouRect = getPosition(ThankYou);
     ThankYouHeight = ThankYouRect.bottom - ThankYouRect.top+20;
@@ -176,7 +176,7 @@ return;
         //window.addEventListener("scroll", updatePositionDebounced, false);
         //window.addEventListener("resize", updateSize, false);
       // Sets app default base URL
-      app.baseUrl = '/';
+      app.baseUrl = '/polymer_crosscut_clientsite/app/stickyfill/test/index.htm';
       if (window.location.port === '') {  // if production
         // Uncomment app.baseURL below and
         // set app.baseURL to '/your-pathname/' if running from folder in production
@@ -200,7 +200,8 @@ return;
       // See https://github.com/Polymer/polymer/issues/1381
       window.addEventListener('WebComponentsReady', function() {
         // imports are loaded and elements have been registered
-        setRoutes(app);
+        $('.sticky').Stickyfill();
+        //setRoutes(app);
         setBodyPaddingRelViewPort();
         dealWithCSSQuirks();
 	      //console.log('WebComponentsReady Fires here');
