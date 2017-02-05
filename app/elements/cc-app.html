@@ -214,12 +214,36 @@
       created: function(){
       },
       ready: function(){
-
+        var vp = this.getViewport();
+        this.customStyle['max-width'] = vp.width+"px";
+        this.customStyle['width'] = vp.width+"px";
+        this.customStyle['min-width'] = vp.width+"px";
       },
       attached: function(){
         console.log('Our app is ready to rock!');
+      },
+      getViewport: function() {
+      // http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/
+           var viewPortWidth;
+           var viewPortHeight;
+           if (typeof window.innerWidth != 'undefined') {
+             viewPortWidth = window.innerWidth;
+             viewPortHeight = window.innerHeight;
+           }
+           else if (typeof document.documentElement !== 'undefined' &&
+           typeof document.documentElement.clientWidth !== 'undefined' &&
+           document.documentElement.clientWidth !== 0) {
+              viewPortWidth = document.documentElement.clientWidth;
+              viewPortHeight = document.documentElement.clientHeight;
+           }
+           else {
+             viewPortWidth = document.getElementsByTagName('body')[0].clientWidth;
+             viewPortHeight = document.getElementsByTagName('body')[0].clientHeight;
+           }
+           return {width:viewPortWidth, height:viewPortHeight};
       }
     });
+
     window.addEventListener('WebComponentsReady', function() {
       $(function() {
            $('.sticky').Stickyfill();
