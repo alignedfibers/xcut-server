@@ -9,9 +9,9 @@
         	display:block;
         	position: relative;
           z-index:100;
-        	min-width: 100vw;
-          max-width: 100vw;
-        	width: 100vw;
+        	min-width: 100%;
+          max-width: 100%;
+        	width: 100%;
           min-height:26.55vw;
           margin:0;
           padding:0;
@@ -25,7 +25,8 @@
         }
         :host > ul > li.img img {
           z-index:4;
-        	width: 100%;
+          width: 100%;
+        	max-width: 100%;
         }
         :host > ul > li.img {
           z-index:3;
@@ -38,6 +39,7 @@
         	position: relative;
         	display: inline-block;
         	width: 100%;
+          max-width: 100%;
         	/*overflow: hidden;*/
         	-webkit-box-sizing: border-box;
         	-moz-box-sizing: border-box;
